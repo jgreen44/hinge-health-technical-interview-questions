@@ -19,11 +19,11 @@ an SQL database (PostgreSQL):
 > Recursive Schema
 
 ```javascript
-{
-    id: Number,
-    label: String,
-    children:[this]
-}
+new mongoose.Schema({
+  id: Number,
+  label: String,
+  children: [this]
+});
 ```
 
 ### PostgreSQL
