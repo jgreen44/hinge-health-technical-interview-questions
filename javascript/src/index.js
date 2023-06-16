@@ -1,8 +1,6 @@
 const express = require('express');
 const Tree = require('./tree');
 
-const db = [];
-
 const PORT = 3001;
 
 const app = express();
@@ -11,35 +9,38 @@ const app = express();
 app.use(express.json());
 
 const tree = new Tree();
-tree.addNode(1, 'root');
-tree.addNode(2, 'ant', 1);
-tree.addNode(3, 'bear', 1);
-tree.addNode(4, 'cat', 3);
-tree.addNode(5, 'dog', 3);
-tree.addNode(6, 'elephant', 5);
-tree.addNode(7, 'frog', 1);
+tree.addNode('root');
+tree.addNode('ant', 1);
+tree.addNode('bear', 1);
+tree.addNode('cat', 3);
+tree.addNode('dog', 3);
+tree.addNode('elephant', 5);
+tree.addNode('frog', 1);
 
-let idCounter = 8;
-
-app.get('/api/tree', (req, res) => {
-  if (db.length === 0) {
-    db.push(res.json(tree.toJSON()));
-  }
-  res.json(tree.toJSON());
-});
+app.get('/api/tree', (req, res) => res.status(200).json(tree.convertToJSON()));
 
 app.post('/api/tree', (req, res) => {
-  const { parent, label } = req.body;
+  try {
+    // Check if "parent" and "label" are provided in request body
+    if (!('parent' in req.body) || !('label' in req.body)) {
+      return res.status(400).json({ message: 'Request body must contain "parent" and "label".' });
+    }
 
-  // generate new unique id
-  // eslint-disable-next-line no-plusplus
-  const newId = idCounter++;
+    // Deconstruct parent and label from request body
+    const { parent, label } = req.body;
 
-  db.push(tree.addNode(newId, label, parent));
+    // Check if parent is a number and label is a string
+    if (typeof parent !== 'number' || typeof label !== 'string') {
+      return res.status(400).json({ message: 'Parent must be a number and label must be a string.' });
+    }
 
-  res.json({ message: 'Node added successfully' });
+    tree.addNode(label, parent);
+    return res.status(200).json({ message: 'Node added successfully' });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
 });
 
 app.listen(PORT, () => {
-  console.log('App listening on port 3001!');
+  console.log(`App listening on port ${PORT}!`);
 });

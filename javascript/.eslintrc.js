@@ -17,5 +17,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'no-plusplus': 'off',
+    'max-classes-per-file': 'off',
   },
 };
