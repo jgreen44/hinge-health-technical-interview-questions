@@ -32,7 +32,7 @@ class Tree {
    * @return {Node} The new node.
    */
   addNode(label, parentId = null) {
-    console.log(`Adding node: label=${label}, parentId=${parentId}`);
+    // Additional validation
     validateData(label, parentId, this.nodes, this.root);
 
     const node = new Node(this.idCounter++, label);
