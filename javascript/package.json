@@ -4,6 +4,8 @@
   "description": "Node app for HH Service Challenge",
   "main": "index.js",
   "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
     "test": "jest",
     "lint": "eslint . --ext .js"
   },
@@ -17,6 +19,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jest": "^24.4.0",
-    "jest": "^27.0.6"
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.22"
   }
 }
