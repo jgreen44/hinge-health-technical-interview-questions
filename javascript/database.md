@@ -32,7 +32,7 @@ new mongoose.Schema({
 
 ```sql
     CREATE TABLE Nodes (
-    id SERIAL PRIMARY KEY,
+    id SERIAL,
     label VARCHAR(255) NOT NULL,
     parent_id INT,
     FOREIGN KEY (parent_id) REFERENCES Nodes (id)
