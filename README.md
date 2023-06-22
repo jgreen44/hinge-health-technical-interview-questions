@@ -2,6 +2,8 @@
 
 ## Welcome. Thank you for taking the time to collaborate with us today.
 
+>[This is my solution](https://github.com/jgreen44/hinge-health-technical-interview-questions/tree/main/javascript)
+
 Today we’d like you to build a service that manages and manipulates trees. Our goal with this activity isn't to "stump" anyone with tricky business but to give candidates a fair and uniform way to express themselves in code on a realistic-ish problem.
  
 This activity is purposely limited in scope to be respectful of your time while still enabling you to demonstrate how you approach and solve problems. If invited to an on-site interview, you'll pair with us to extend the service you created. We'd much rather see how you work on a problem you're familiar with than on some clever whiteboard puzzle we spring on you.
